@@ -985,7 +985,7 @@ func writeID3Tags(filePath string, track Track) error {
 		tag.SetGenre(genre)
 	}
 
-	// Записываем URI обложки альбома в пользовательский URL фрейм (WXXX)
+	// Записываем URI обложки альбома в пользовательский текстовый фрейм (TXXX)
 	coverURI := track.CoverUri
 	if coverURI == "" {
 		coverURI = track.OgImage
@@ -999,13 +999,13 @@ func writeID3Tags(filePath string, track Track) error {
 		if !strings.HasPrefix(coverURI, "http://") && !strings.HasPrefix(coverURI, "https://") {
 			coverURL = "https://" + strings.TrimPrefix(coverURI, "//")
 		}
-		// Записываем URI в пользовательский URL фрейм
-		urlFrame := id3v2.URLUserDefinedFrame{
+		// Записываем URI в пользовательский текстовый фрейм
+		urlFrame := id3v2.UserDefinedTextFrame{
 			Encoding:    tag.DefaultEncoding(),
 			Description: "Cover Art URL",
-			URL:         coverURL,
+			Value:       coverURL,
 		}
-		tag.AddFrame("WXXX", urlFrame)
+		tag.AddFrame("TXXX", urlFrame)
 	}
 
 	// Сохраняем изменения
