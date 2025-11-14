@@ -1,0 +1,28 @@
+# Environment variables
+.env
+
+# Build artifacts
+yandex-music-exporter
+yandex-music-exporter.exe
+release/
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
